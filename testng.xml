@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="E:/Sumerge/TestNG Project">
+        <classes>
+            <class name="com.sumerge.createUserTest">
+                <methods>
+                    <include name="checkCreatedUserData"/>
+                </methods>
+            </class>
+            <class name="com.sumerge.deleteUserTest">
+                <methods>
+                    <include name="deletedUserTest"/>
+                </methods>
+            </class>
+            <class name="com.sumerge.multiUserTest">
+                <methods>
+                    <include name="checkMultiUsersData"/>
+                </methods>
+            </class>
+            <class name="com.sumerge.singleUserTest">
+                <methods>
+                    <include name="checkSingleUserData"/>
+                </methods>
+            </class>
+            <class name="com.sumerge.updateUserTest">
+                <methods>
+                    <include name="checkUpdatedUserData"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
