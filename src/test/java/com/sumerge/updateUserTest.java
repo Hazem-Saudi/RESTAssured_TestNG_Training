@@ -21,7 +21,7 @@ public class updateUserTest {
         s = new singleUserTest();
         softly = new SoftAssert();
         createUser = new createUserTest();
-        System.out.println(createUser.id);
+        System.out.println(createUser.returnID());
     }
 
     public JsonPath updateUser(){

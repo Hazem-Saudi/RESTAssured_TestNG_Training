@@ -17,7 +17,7 @@ public class createUserTest {
 
     private singleUserTest s;
     private SoftAssert softly;
-    public static String id;
+    private static String id;
     @BeforeClass
     public void setup()
     {
@@ -40,14 +40,13 @@ public class createUserTest {
                         assertThat().statusCode(201).
                         extract().response().jsonPath();
         this.id=response.get("id");
-        System.out.println(id);
         return (response);
     }
 
-    /*public String returnID(){
+    public String returnID(){
         System.out.println(id);
         return (this.id);
-    }*/
+    }
 
     @Test(groups = "creation")
     public void checkCreatedUserData(){
