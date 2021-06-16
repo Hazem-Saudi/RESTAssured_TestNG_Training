@@ -2,21 +2,21 @@ package com.sumerge;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.testng.asserts.SoftAssert;
-
 import static io.restassured.RestAssured.*;
 
 
 public class singleUserTest {
-    SoftAssert softly = new SoftAssert();
+
+    private SoftAssert softly;
+
+    @BeforeClass
+    public void setup() {
+        softly = new SoftAssert();
+    }
 
     @BeforeClass
     public RequestSpecification setBaseUri() {

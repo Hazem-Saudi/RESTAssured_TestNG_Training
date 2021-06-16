@@ -3,10 +3,8 @@ package com.sumerge;
 import io.restassured.path.json.JsonPath;
 import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import static io.restassured.RestAssured.given;
 
 public class updateUserTest {
@@ -21,13 +19,15 @@ public class updateUserTest {
         s = new singleUserTest();
         softly = new SoftAssert();
         createUser = new createUserTest();
-        System.out.println(createUser.returnID());
     }
 
+    //update user data and get response to assert it
     public JsonPath updateUser(){
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("name", "morpheus");
         jsonBody.put("job", "zion resident");
+        jsonBody.put("id", createUser.returnID());
+
         JsonPath response =
                 given().
                         spec(s.setBaseUri()).
@@ -40,12 +40,16 @@ public class updateUserTest {
                         extract().response().jsonPath();
         return (response);
     }
-    @Test (groups = "update",dependsOnGroups = "creation")
+
+    //Doing assertions
+    @Test (dependsOnGroups = "creation")
     public void checkUpdatedUserData(){
         JsonPath response = updateUser();
         softly.assertEquals(response.get("name"), "morpheus");
         softly.assertEquals(response.get("job"), "zion resident");
+        softly.assertEquals(response.get("id"), createUser.returnID());
         softly.assertAll();
+        System.out.println("ID recieved by update calss: "+createUser.returnID());
     }
 }
 

@@ -1,16 +1,10 @@
 package com.sumerge;
 
-import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.json.simple.JSONObject;
-
 import static io.restassured.RestAssured.given;
 
 public class createUserTest {
@@ -18,6 +12,7 @@ public class createUserTest {
     private singleUserTest s;
     private SoftAssert softly;
     private static String id;
+
     @BeforeClass
     public void setup()
     {
@@ -25,6 +20,7 @@ public class createUserTest {
         softly = new SoftAssert();
     }
 
+    //Creating user and getting response to assert it
     public JsonPath create() {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("name", "morpheus");
@@ -43,16 +39,19 @@ public class createUserTest {
         return (response);
     }
 
+    //function to pass "ID" to updateUser class
     public String returnID(){
-        System.out.println(id);
         return (this.id);
     }
 
+    //Doing assertions
+    //Creating group so update user test can't be preformed unless user is created
     @Test(groups = "creation")
     public void checkCreatedUserData(){
         JsonPath response = create();
         softly.assertEquals(response.get("name"), "morpheus");
         softly.assertEquals(response.get("job"), "leader");
         softly.assertAll();
+        System.out.println("ID passed by create calss: "+ returnID());
     }
 }

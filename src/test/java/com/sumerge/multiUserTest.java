@@ -1,7 +1,6 @@
 package com.sumerge;
 
 import io.restassured.path.json.JsonPath;
-import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -19,6 +18,7 @@ public class multiUserTest {
         softly = new SoftAssert();
     }
 
+    //Creating test data
     public static Object[][] generateData() {
         return new Object[][]
                 {
@@ -37,6 +37,7 @@ public class multiUserTest {
                 };
     }
 
+    //Doing assertions
     @Test
     public void checkMultiUsersData() {
         Object[][] myData = generateData();

@@ -16,7 +16,7 @@ public class deleteUserTest {
         s = new singleUserTest();
         softly = new SoftAssert();
     }
-    @Test(dependsOnGroups = "update")
+    @Test()
     public void deletedUserTest(){
         given().
                 spec(s.setBaseUri()).
