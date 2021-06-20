@@ -49,7 +49,7 @@ public class updateUserTest {
         softly.assertEquals(response.get("job"), "zion resident");
         softly.assertEquals(response.get("id"), createUser.returnID());
         softly.assertAll();
-        System.out.println("ID recieved by update calss: "+createUser.returnID());
+        System.out.println("ID recieved by update class: "+createUser.returnID());
     }
 }
 

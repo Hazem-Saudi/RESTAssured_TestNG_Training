@@ -52,6 +52,6 @@ public class createUserTest {
         softly.assertEquals(response.get("name"), "morpheus");
         softly.assertEquals(response.get("job"), "leader");
         softly.assertAll();
-        System.out.println("ID passed by create calss: "+ returnID());
+        System.out.println("ID passed by create class: "+ returnID());
     }
 }
