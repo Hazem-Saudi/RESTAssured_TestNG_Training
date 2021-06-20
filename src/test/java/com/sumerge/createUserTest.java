@@ -44,6 +44,7 @@ public class createUserTest {
         return (this.id);
     }
 
+    //comment
     //Doing assertions
     //Creating group so update user test can't be preformed unless user is created
     @Test(groups = "creation")
